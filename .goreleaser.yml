@@ -28,8 +28,6 @@ archives:
     <<: &archive_defaults
       name_template: 'name_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
     wrap_in_directory: true
-    replacements:
-      darwin: macOS
     format: tar.gz
     files:
       - LICENSE
