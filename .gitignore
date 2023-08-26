@@ -2,7 +2,7 @@
 # https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
 #
 
-http-purr
+./http-purr
 
 # Binaries for programs and plugins
 *.exe
