@@ -1,3 +1,3 @@
-# ᗢ http-purr [under construction]
+# ᗢ httpurr [under construction]
 
 HTTP status codes on speed dial

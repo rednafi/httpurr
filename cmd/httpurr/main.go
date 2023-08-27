@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/rednafi/http-purr/src"
+	"github.com/rednafi/httpurr/src"
 )
 
 func main() {
