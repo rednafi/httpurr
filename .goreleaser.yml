@@ -11,8 +11,11 @@ builds:
       - amd64
       - arm64
       - "386"
-    main: ./cmd/httpurr/main.go
-   
+    binary: bin/httpurr
+    main: ./cmd/httpurr
+    ldflags:
+      - -s -w -X github.com/rednafi/httpurr/cmd/httpurr/main.Version={{.Version}}
+
 
 archives:
   - format: tar.gz
