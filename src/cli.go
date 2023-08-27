@@ -61,7 +61,7 @@ func printStatusCodes(w *tabwriter.Writer) {
 // Print the status text for a given status code
 func printStatusText(w *tabwriter.Writer, code string) {
 	defer w.Flush()
-	
+
 	statusText := statusCodeMap[code]
 	fmt.Fprintln(w, formatStatusText(statusText))
 }
