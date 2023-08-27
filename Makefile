@@ -16,11 +16,13 @@ test:
 	@echo "Running tests"
 	@go test -v ./...
 
+
 .PHONY: clean
 clean:
 	@echo "Cleaning up"
 	@go clean
 	@rm -rf ./bin
+
 
 .PHONY: init
 init:
