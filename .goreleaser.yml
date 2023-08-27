@@ -11,7 +11,6 @@ builds:
       - amd64
       - arm64
       - "386"
-    binary: bin
     main: ./cmd/httpurr
     ldflags:
       - -s -w -X ./cmd/httpurr/main.Version={{.Version}}
