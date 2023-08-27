@@ -7,6 +7,10 @@ builds:
       - linux
       - windows
       - darwin
+    goarch:
+      - amd64
+      - arm64
+      - "386"
     main: ./cmd/httpurr/main.go
 
 archives:
