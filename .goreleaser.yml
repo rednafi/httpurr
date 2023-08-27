@@ -1,5 +1,5 @@
 builds:
-  - binary: ./cmd/http-purr
+  - binary: ./cmd/httpurr
     goos:
       - darwin
       - linux
