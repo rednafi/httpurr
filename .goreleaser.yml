@@ -1,5 +1,5 @@
 builds:
-  - binary: mediumautopost
+  - binary: ./cmd/http-purr
     goos:
       - darwin
       - linux
@@ -29,3 +29,58 @@ brews:
 
 checksum:
   name_template: 'checksums.txt'
+
+
+# # .goreleaser.yaml
+# before:
+#   hooks:
+#     - go mod tidy
+#     - go generate ./...
+
+# builds:
+#   - <<: &build_defaults
+#       binary: bin/http-purr
+#       main: ./cmd/http-purr
+#     id: macos
+#     goos: [darwin]
+#     goarch: [amd64, arm64]
+#   - <<: *build_defaults
+#     id: linux
+#     goos: [linux]
+#     goarch: [arm, amd64, arm64]
+#     env:
+#       - CGO_ENABLED=0
+
+# archives:
+#   - id: nix
+#     builds: [macos, linux]
+#     <<: &archive_defaults
+#       name_template: |-
+#         'http-purr_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+#     wrap_in_directory: true
+#     format: tar.gz
+#     files:
+#       - LICENSE
+#   - id: windows
+#     builds: [windows]
+#     <<: *archive_defaults
+#     wrap_in_directory: false
+#     format: zip
+#     files:
+#       - LICENSE
+
+# release:
+#   prerelease: auto
+
+# checksum:
+#   name_template: 'checksums.txt'
+
+# snapshot:
+#   name_template: '{{ incpatch .Version }}-next'
+
+# changelog:
+#   sort: asc
+#   filters:
+#     exclude:
+#       - '^docs:'
+#       - '^test:'
