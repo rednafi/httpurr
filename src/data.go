@@ -183,7 +183,7 @@ Source
 ------
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/202
-	`
+`
 	statusNonAuthoritativeInfo203 = `
 Description
 -----------
@@ -650,7 +650,7 @@ Source
 ------
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
-	`
+`
 	statusMethodNotAllowed405 = `
 Description
 -----------
@@ -707,7 +707,7 @@ Source
 ------
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/406
-	`
+`
 	statusProxyAuthRequired407 = `
 Description
 -----------
@@ -729,7 +729,7 @@ Source
 ------
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/407
-	`
+`
 	statusRequestTimeout408 = `
 Description
 -----------
@@ -887,7 +887,7 @@ Source
 ------
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/414
-` // RFC 9110, 15.5.15
+` 
 	statusUnsupportedMediaType415 = `
 Description
 -----------
@@ -977,7 +977,7 @@ Source
 ------
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/418
-	`
+`
 	statusMisdirectedRequest421 = `
 Description
 -----------
