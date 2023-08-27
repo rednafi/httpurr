@@ -8,17 +8,17 @@ class Httpurr < Formula
   version "0.1.0"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/rednafi/httpurr/releases/download/v0.1.0/httpurr_Darwin_x86_64.tar.gz"
-      sha256 "bdf7a62870cc02a7636e39d6930e5c1112a5d2029eb007559adc7698ff00d0d3"
+    if Hardware::CPU.arm?
+      url "https://github.com/rednafi/httpurr/releases/download/v0.1.0/httpurr_Darwin_arm64.tar.gz"
+      sha256 "edceb5488ce255d6ed403b34e12025a9ad282d14f6d06058e1958fdb331ebc0e"
 
       def install
         bin.install "httpurr"
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/rednafi/httpurr/releases/download/v0.1.0/httpurr_Darwin_arm64.tar.gz"
-      sha256 "11180680fc96c713b1cb56c3aa36f9e3abb710ce2bf47bba075e1b85863e6d44"
+    if Hardware::CPU.intel?
+      url "https://github.com/rednafi/httpurr/releases/download/v0.1.0/httpurr_Darwin_x86_64.tar.gz"
+      sha256 "b56d0aa0cc428dd74664cc0574f009ea9cbb73484ef0380b16153d3541069a45"
 
       def install
         bin.install "httpurr"
@@ -29,7 +29,7 @@ class Httpurr < Formula
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/rednafi/httpurr/releases/download/v0.1.0/httpurr_Linux_arm64.tar.gz"
-      sha256 "b0ea1c37a746ae0333d0780e51382d9a00f01c366b4f76c18aed3309a851fb9e"
+      sha256 "2b9c65a676bf93d400bbfede1e7819f4ef20f306cfd4ba5d6e58c267176eac2e"
 
       def install
         bin.install "httpurr"
@@ -37,7 +37,7 @@ class Httpurr < Formula
     end
     if Hardware::CPU.intel?
       url "https://github.com/rednafi/httpurr/releases/download/v0.1.0/httpurr_Linux_x86_64.tar.gz"
-      sha256 "35279736aade78ab9330afef4690fa3903a31597893809bb5cbef3cecf4af1ac"
+      sha256 "0f85726a99c9ad28548dc4f12ff1b90d9ec5beb002e1b7faaa394b0b726dca5e"
 
       def install
         bin.install "httpurr"
