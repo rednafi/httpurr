@@ -23,7 +23,7 @@
     go install github.com/rednafi/httpurr/cmd/httpurr
     ```
 
-## Usage
+## Quickstart
 
 * Print the options:
 
