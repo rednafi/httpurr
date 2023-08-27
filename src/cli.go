@@ -68,9 +68,10 @@ func printStatusText(w *tabwriter.Writer, code string) {
 
 // Cli assembly
 func Cli() {
-	code := flag.String("code", "", "Print description of an HTTP status code")
+	code := flag.String("code", "", "Print the description of an HTTP status code")
 	help := flag.Bool("help", false, "Print usage")
-	list := flag.Bool("list", false, "List all HTTP status codes")
+	version := flag.Bool("version", false, "Print version")
+	list := flag.Bool("list", false, "Print HTTP status codes")
 
 	// Create a tabwriter to print the output in a tabular format
 	w := tabwriter.NewWriter(flag.CommandLine.Output(), 0, 4, 4, ' ', 0)
@@ -88,6 +89,12 @@ func Cli() {
 	// If no arguments are provided, print the help message
 	if len(os.Args) < 2 || *help {
 		flag.Usage()
+		return
+	}
+
+	// If the version flag is provided, print the version
+	if *version {
+		fmt.Fprintln(w, version)
 		return
 	}
 
