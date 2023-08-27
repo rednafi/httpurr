@@ -12,8 +12,7 @@ builds:
       - arm64
       - "386"
     main: ./cmd/httpurr/main.go
-    ldflags:
-      "-X main.Version={{.Version}"
+   
 
 archives:
   - format: tar.gz
