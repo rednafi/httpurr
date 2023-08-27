@@ -67,7 +67,7 @@ func printStatusText(w *tabwriter.Writer, code string) {
 }
 
 // Cli assembly
-func Cli(ver *string) {
+func Cli(ver string) {
 	code := flag.String("code", "", "Print the description of an HTTP status code")
 	help := flag.Bool("help", false, "Print usage")
 	list := flag.Bool("list", false, "Print HTTP status codes")
@@ -94,7 +94,7 @@ func Cli(ver *string) {
 
 	// If the version flag is provided, print the version
 	if *version {
-		fmt.Fprintln(w, *ver)
+		fmt.Fprintln(w, ver)
 		return
 	}
 

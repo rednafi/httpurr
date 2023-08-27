@@ -8,6 +8,6 @@ import (
 var Version string
 
 func main() {
-	src.Cli(&Version)
+	src.Cli(Version)
 
 }
