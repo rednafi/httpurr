@@ -11,11 +11,10 @@ builds:
       - amd64
       - arm64
       - "386"
-    binary: bin/httpurr
+    binary: bin
     main: ./cmd/httpurr
     ldflags:
-      - -s -w -X github.com/rednafi/httpurr/cmd/httpurr/main.Version={{.Version}}
-
+      - -s -w -X ./cmd/httpurr/main.Version={{.Version}}
 
 archives:
   - format: tar.gz
