@@ -1,3 +1,3 @@
-module github.com/rednafi/http-purr
+module http-purr
 
 go 1.21.0
