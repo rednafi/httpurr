@@ -94,7 +94,7 @@ func Cli(ver *string) {
 
 	// If the version flag is provided, print the version
 	if *version {
-		fmt.Fprintln(w, ver)
+		fmt.Fprintln(w, *ver)
 		return
 	}
 
