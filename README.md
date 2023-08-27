@@ -1,6 +1,6 @@
 <div align="left">
     <h1>ᗢ httpurr</h1>
-    <i>HTTP status codes on speed dial</i>
+    <strong><i>HTTP status codes on speed dial</i></strong>
     <div align="right">
 </div>
 
