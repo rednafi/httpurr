@@ -33,19 +33,19 @@
     httpurr -help
     ```
 
-    ```
+    ```txt
     ᗢ httpurr
     ==========
 
     Usage of httpurr:
     -code string
-            Print the description of an HTTP status code
+          Print the description of an HTTP status code
     -help
-            Print usage
+          Print usage
     -list
-            Print HTTP status codes
+          Print HTTP status codes
     -version
-            Print version
+          Print version
     ```
 
 * List the HTTP status codes:
