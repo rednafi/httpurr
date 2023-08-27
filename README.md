@@ -76,29 +76,4 @@
     httpurr -code 410
     ```
 
-    ```txt
-    ᗢ httpurr
-    ==========
-
-    Description
-    -----------
-
-    The HyperText Transfer Protocol (HTTP) 410 Gone client error response code
-    indicates that access to the target resource is no longer available at the
-    origin server and that this condition is likely to be permanent.
-
-    If you don't know whether this condition is temporary or permanent, a 404 status
-    code should be used instead.
-
-    Status
-    ------
-
-    410 Gone
-
-    Source
-    ------
-
-    https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/410
-    ```
-
 [cover-img]: https://user-images.githubusercontent.com/30027932/263548019-7de08764-5030-4d65-95d5-166d226bc7d9.png
