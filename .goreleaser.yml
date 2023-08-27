@@ -23,13 +23,26 @@ archives:
     format_overrides:
     - goos: windows
       format: zip
+
 checksum:
   name_template: 'checksums.txt'
+
 snapshot:
   name_template: "{{ incpatch .Version }}-next"
+
 changelog:
   sort: asc
   filters:
     exclude:
       - '^docs:'
       - '^test:'
+
+brews:
+  - name: httpurr
+    homepage: "https://github.com/rednafi/httpurr"
+    repository:
+      owner: rednafi
+      name: httpurr
+    commit_author:
+      name: rednafi
+      email: redowan.nafi@gmail.com
