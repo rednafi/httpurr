@@ -17,11 +17,13 @@
         && brew install httpurr
     ```
 
-* Or else, go install:
+* Or elsewhere, go install:
 
     ```sh
     go install github.com/rednafi/httpurr/cmd/httpurr
     ```
+
+* Else, download the appropriate [binary] for your CPU arch and add it to the `$PATH`.
 
 ## Quickstart
 
@@ -92,4 +94,5 @@
     make test
     ```
 
-[cover-img]: https://user-images.githubusercontent.com/30027932/263548019-7de08764-5030-4d65-95d5-166d226bc7d9.png
+[cover-img]: https://user-images.githubusercontent.com/30027932/263560103-e85f1f23-d5be-441a-a7a4-373bfd8cbf29.svg
+[binary]: https://github.com/rednafi/httpurr/releases/latest
