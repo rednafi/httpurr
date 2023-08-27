@@ -93,6 +93,11 @@
     ```sh
     make test
     ```
+* To publish a new version, create a new [release] with a [tag], and the [CI] will take care
+of the rest.
 
 [cover-img]: https://github.com/rednafi/httpurr/assets/30027932/1c8e01fc-e943-4adf-b212-56584ff99f5d
 [binary]: https://github.com/rednafi/httpurr/releases/latest
+[tag]: https://github.com/rednafi/httpurr/tags
+[release]: https://github.com/rednafi/httpurr/releases/new
+[CI]: ./.github/workflows/release.yml
