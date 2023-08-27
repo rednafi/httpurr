@@ -7,7 +7,7 @@ builds:
       - linux
       - windows
       - darwin
-    binary: ./cmd/httpurr/main.go
+    main: ./cmd/httpurr/main.go
 
 archives:
   - format: tar.gz
