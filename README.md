@@ -76,4 +76,20 @@
     httpurr -code 410
     ```
 
+## Development
+
+* Clone the repo.
+* Go to the root directory and run:
+    ```sh
+    make init
+    ```
+* Run the linter:
+    ```sh
+    make lint
+    ```
+* Run the tests:
+    ```sh
+    make test
+    ```
+
 [cover-img]: https://user-images.githubusercontent.com/30027932/263548019-7de08764-5030-4d65-95d5-166d226bc7d9.png
