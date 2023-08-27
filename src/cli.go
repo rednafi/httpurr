@@ -21,8 +21,8 @@ func formatStatusText(text string) string {
 func printHeader(w *tabwriter.Writer) {
 	defer w.Flush()
 
-	fmt.Fprintf(w, "\nᗢ HTTP Purr\n")
-	fmt.Fprintf(w, "===========\n\n")
+	fmt.Fprintf(w, "\nᗢ httpurr\n")
+	fmt.Fprintf(w, "=========\n\n")
 }
 
 // Print all the status in a tabular format
