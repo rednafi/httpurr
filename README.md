@@ -4,6 +4,8 @@
     <div align="right">
 </div>
 
+---
+
 ![img][cover-img]
 
 ## Installation
