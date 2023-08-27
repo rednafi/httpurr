@@ -94,5 +94,5 @@
     make test
     ```
 
-[cover-img]: https://user-images.githubusercontent.com/30027932/263560357-1c8e01fc-e943-4adf-b212-56584ff99f5d.png
+[cover-img]: https://github.com/rednafi/httpurr/assets/30027932/1c8e01fc-e943-4adf-b212-56584ff99f5d
 [binary]: https://github.com/rednafi/httpurr/releases/latest
