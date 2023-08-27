@@ -5,9 +5,9 @@ import (
 )
 
 // Ldflags filled by goreleaser
-var Version string
+var version string
 
 func main() {
-	src.Cli(Version)
+	src.Cli(version)
 
 }

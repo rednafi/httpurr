@@ -12,9 +12,7 @@ builds:
       - arm64
       - "386"
     main: ./cmd/httpurr
-    ldflags:
-      - -s -w -X ./cmd/httpurr/main.Version={{.Version}}
-
+    
 archives:
   - format: tar.gz
     # this name template makes the OS and Arch compatible with the results of uname.
