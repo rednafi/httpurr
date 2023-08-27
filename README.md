@@ -6,6 +6,8 @@
 
 ---
 
+![img][cover-img]
+
 ## Installation
 
 * On MacOS, brew install:
@@ -98,3 +100,5 @@
 
     https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/410
     ```
+
+[cover-img]: https://user-images.githubusercontent.com/30027932/263548019-7de08764-5030-4d65-95d5-166d226bc7d9.png
