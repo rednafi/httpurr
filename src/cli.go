@@ -19,13 +19,16 @@ func formatStatusText(text string) string {
 
 // Always print the header
 func printHeader(w *tabwriter.Writer) {
+	defer w.Flush()
+
 	fmt.Fprintf(w, "\nᗢ HTTP Purr\n")
 	fmt.Fprintf(w, "===========\n\n")
-	_ = w.Flush()
 }
 
 // Print all the status in a tabular format
 func printStatusCodes(w *tabwriter.Writer) {
+	defer w.Flush()
+
 	fmt.Fprintf(w, "Status Codes\n")
 	fmt.Fprintf(w, "------------\n\n")
 
@@ -53,14 +56,14 @@ func printStatusCodes(w *tabwriter.Writer) {
 		}
 		fmt.Fprintf(w, "%s\t%s\n", code, statusText)
 	}
-	_ = w.Flush()
 }
 
 // Print the status text for a given status code
 func printStatusText(w *tabwriter.Writer, code string) {
+	defer w.Flush()
+	
 	statusText := statusCodeMap[code]
 	fmt.Fprintln(w, formatStatusText(statusText))
-	_ = w.Flush()
 }
 
 // Cli assembly
@@ -75,9 +78,9 @@ func Cli() {
 
 	prevUsage := flag.Usage
 	flag.Usage = func() {
+		defer w.Flush()
 		printHeader(w)
 		prevUsage()
-		_ = w.Flush()
 	}
 
 	flag.Parse()
