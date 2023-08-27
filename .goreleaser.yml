@@ -20,7 +20,7 @@ universal_binaries:
 brews:
   - name: httpurr
     homepage: "https://github.com/rednafi/httpurr"
-    tap:
+    repository:
       owner: rednafi
       name: httpurr
     commit_author:
