@@ -59,7 +59,7 @@ func TestPrintHeader(t *testing.T) {
 
 	// Check output
 	got := buf.String()
-	want := "\nᗢ httpurr\n=========\n\n"
+	want := "\nᗢ httpurr\n==========\n\n"
 
 	if got != want {
 		t.Errorf("printHeader() = %q, want %q", got, want)
