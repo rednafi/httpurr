@@ -12,7 +12,7 @@ builds:
       - arm64
       - "386"
     main: ./cmd/httpurr
-    
+
 archives:
   - format: tar.gz
     # this name template makes the OS and Arch compatible with the results of uname.
@@ -44,6 +44,7 @@ changelog:
 brews:
   - name: httpurr
     homepage: "https://github.com/rednafi/httpurr"
+    description: HTTP status codes on speed dial
     repository:
       owner: rednafi
       name: httpurr

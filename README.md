@@ -1,20 +1,22 @@
-# ᗢ httpurr [under construction]
-
-HTTP status codes on speed dial
+<div align="left">
+    <h1>ᗢ httpurr</h1>
+    <i>HTTP status codes on speed dial</i>
+    <div align="right">
+</div>
 
 ## Installation
 
-* Brew install:
+* On MacOS, brew install:
 
     ```sh
     brew tap rednafi/httpurr https://github.com/rednafi/httpurr \
         && brew install httpurr
     ```
 
-* Go install:
+* Or else, go install:
 
     ```sh
-    go install  github.com/rednafi/httpurr/cmd/httpurr
+    go install github.com/rednafi/httpurr/cmd/httpurr
     ```
 
 ## Usage
@@ -31,11 +33,13 @@ HTTP status codes on speed dial
 
     Usage of httpurr:
     -code string
-            Print description of an HTTP status code
+            Print the description of an HTTP status code
     -help
             Print usage
     -list
-            List all HTTP status codes
+            Print HTTP status codes
+    -version
+            Print version
     ```
 
 * List the HTTP status codes:
@@ -75,19 +79,22 @@ HTTP status codes on speed dial
     Description
     -----------
 
-    The HTTP 429 Too Many Requests response status code indicates the user has sent
-    too many requests in a given amount of time ("rate limiting").
+    The HTTP 418 I'm a teapot client error response code indicates that the server
+    refuses to brew coffee because it is, permanently, a teapot. A combined
+    coffee/tea pot that is temporarily out of coffee should instead return 503. This
+    error is a reference to Hyper Text Coffee Pot Control Protocol defined in April
+    Fools' jokes in 1998 and 2014.
 
-    A Retry-After header might be included to this response indicating how long to
-    wait before making a new request.
+    Some websites use this response for requests they do not wish to handle, such as
+    automated queries.
 
     Status
     ------
 
-    429 Too Many Requests
+    418 I'm a teapot
 
     Source
     ------
 
-    https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429
+    https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/418
     ```
