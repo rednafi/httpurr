@@ -50,3 +50,6 @@ brews:
     commit_author:
       name: rednafi
       email: redowan.nafi@gmail.com
+
+github_urls:
+  download: https://github.com/rednafi/httpurr
