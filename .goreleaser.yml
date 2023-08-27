@@ -22,7 +22,8 @@ archives:
   - id: nix
     builds: [macos, linux]
     <<: &archive_defaults
-      name_template: 'name_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+      name_template: |-
+        'http-purr_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
     wrap_in_directory: true
     format: tar.gz
     files:
