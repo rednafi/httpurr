@@ -261,4 +261,5 @@ func TestCliCode(t *testing.T) {
 		t.Errorf("Expected 404 status text to be printed")
 	}
 }
+
 // ================== Cli tests end ==================
