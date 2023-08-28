@@ -2,10 +2,15 @@ package src
 
 import (
 	"bytes"
+	"flag"
+	"os"
 	"strings"
 	"testing"
+
 	"text/tabwriter"
 )
+
+// ================== Cli helper tests start ==================
 
 func TestFormatStatusText(t *testing.T) {
 
@@ -191,3 +196,69 @@ func TestPrintStatusText(t *testing.T) {
 	}
 
 }
+
+// ================== Cli helper tests end ==================
+
+// ================== Cli tests start ==================
+
+func TestCliHelp(t *testing.T) {
+	// Must reset flag.CommandLine to avoid 'flag redefined' error
+	flag.CommandLine = flag.NewFlagSet(os.Args[0], flag.ExitOnError)
+	os.Args = []string{"cli", "-help"}
+
+	var buf bytes.Buffer
+	flag.CommandLine.SetOutput(&buf)
+
+	Cli("v1.0")
+
+	if !strings.Contains(buf.String(), "Usage") {
+		t.Errorf("Expected help text to be printed")
+	}
+}
+
+func TestCliVersion(t *testing.T) {
+	// Must reset flag.CommandLine to avoid "flag redefined" error
+	flag.CommandLine = flag.NewFlagSet(os.Args[0], flag.ExitOnError)
+
+	os.Args = []string{"cli", "-version"}
+
+	var buf bytes.Buffer
+	flag.CommandLine.SetOutput(&buf)
+
+	Cli("v1.0")
+
+	if !strings.Contains(buf.String(), "") {
+		t.Errorf("Expected version to be printed")
+	}
+}
+
+func TestCliList(t *testing.T) {
+	// Must reset flag.CommandLine to avoid "flag redefined" error
+	flag.CommandLine = flag.NewFlagSet(os.Args[0], flag.ExitOnError)
+	os.Args = []string{"cli", "-list"}
+
+	var buf bytes.Buffer
+	flag.CommandLine.SetOutput(&buf)
+
+	Cli("v1.0")
+
+	if !strings.Contains(buf.String(), "418") {
+		t.Errorf("Expected status codes to be printed")
+	}
+}
+
+func TestCliCode(t *testing.T) {
+	// Must reset flag.CommandLine to avoid "flag redefined" error
+	flag.CommandLine = flag.NewFlagSet(os.Args[0], flag.ExitOnError)
+	os.Args = []string{"cli", "-code", "404"}
+
+	var buf bytes.Buffer
+	flag.CommandLine.SetOutput(&buf)
+
+	Cli("v1.0")
+
+	if !strings.Contains(buf.String(), "404 Not Found") {
+		t.Errorf("Expected 404 status text to be printed")
+	}
+}
+// ================== Cli tests end ==================
