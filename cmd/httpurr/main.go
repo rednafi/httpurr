@@ -1,7 +1,6 @@
 package main
 
 import (
-	"flag"
 	"github.com/rednafi/httpurr/src"
 	"os"
 	"text/tabwriter"
@@ -11,6 +10,6 @@ import (
 var version string
 
 func main() {
-	w := tabwriter.NewWriter(flag.CommandLine.Output(), 0, 4, 4, ' ', 0)
+	w := tabwriter.NewWriter(os.Stdout, 0, 4, 4, ' ', 0)
 	src.Cli(w, version, os.Exit)
 }
