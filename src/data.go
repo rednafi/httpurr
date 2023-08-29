@@ -1455,7 +1455,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/511
 )
 
 var statusCodes = []string{
-	"------------------ 1xx ------------------",
+	"------------------ 1xx ------------------", // category header
 	"100",
 	"101",
 	"102",

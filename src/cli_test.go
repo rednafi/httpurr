@@ -32,7 +32,7 @@ func TestFormatStatusText(t *testing.T) {
 		t.Errorf("formatStatusText(%q) = %q, want %q", in, out, want)
 	}
 
-	// Test trimming newlines from both
+	// Test trimming newlines from both ends
 	in = "\nHello\n"
 	want = "Hello"
 
@@ -41,7 +41,7 @@ func TestFormatStatusText(t *testing.T) {
 		t.Errorf("formatStatusText(%q) = %q, want %q", in, out, want)
 	}
 
-	// Test with no surrounding whitespace
+	// Test with no surrounding whitespaces
 	in = "Hello"
 	want = "Hello"
 
@@ -52,15 +52,12 @@ func TestFormatStatusText(t *testing.T) {
 }
 
 func TestPrintHeader(t *testing.T) {
-	// Create a tabwriter
-	w := tabwriter.Writer{}
-
-	// Capture output
+	// Create a tabwriter with a buffer
 	var buf bytes.Buffer
-	w.Init(&buf, 0, 4, 0, ' ', 0)
+	w := tabwriter.NewWriter(&buf, 0, 4, 4, ' ', 0)
 
 	// Call function
-	printHeader(&w)
+	printHeader(w)
 
 	// Check output
 	got := buf.String()
@@ -72,15 +69,12 @@ func TestPrintHeader(t *testing.T) {
 }
 
 func TestPrintStatusCodes(t *testing.T) {
-	// Create a tabwriter
-	w := tabwriter.Writer{}
-
-	// Capture output
+	// Create a tabwriter with a buffer
 	var buf bytes.Buffer
-	w.Init(&buf, 0, 4, 0, ' ', 0)
+	w := tabwriter.NewWriter(&buf, 0, 4, 4, ' ', 0)
 
 	// Call function
-	printStatusCodes(&w)
+	_ = printStatusCodes(w, "")
 
 	// Check output
 	got := buf.String()
@@ -95,69 +89,69 @@ func TestPrintStatusCodes(t *testing.T) {
 
 	// Spot check a few lines
 	wantLines := []string{
-		"100Continue",
-		"101Switching Protocols",
-		"102Processing",
-		"103Early Hints",
-		"200OK",
-		"201Created",
-		"202Accepted",
-		"203Non-Authoritative Information",
-		"204No Content",
-		"205Reset Content",
-		"206Partial Content",
-		"207Multi-Status",
-		"208Already Reported",
-		"226IM Used",
-		"300Multiple Choices",
-		"301Moved Permanently",
-		"302Found",
-		"303See Other",
-		"304Not Modified",
-		"305Use Proxy",
+		"100    Continue",
+		"101    Switching Protocols",
+		"102    Processing",
+		"103    Early Hints",
+		"200    OK",
+		"201    Created",
+		"202    Accepted",
+		"203    Non-Authoritative Information",
+		"204    No Content",
+		"205    Reset Content",
+		"206    Partial Content",
+		"207    Multi-Status",
+		"208    Already Reported",
+		"226    IM Used",
+		"300    Multiple Choices",
+		"301    Moved Permanently",
+		"302    Found",
+		"303    See Other",
+		"304    Not Modified",
+		"305    Use Proxy",
 		"-",
-		"307Temporary Redirect",
-		"308Permanent Redirect",
-		"400Bad Request",
-		"401Unauthorized",
-		"402Payment Required",
-		"403Forbidden",
-		"404Not Found",
-		"405Method Not Allowed",
-		"406Not Acceptable",
-		"407Proxy Authentication Required",
-		"408Request Timeout",
-		"409Conflict",
-		"410Gone",
-		"411Length Required",
-		"412Precondition Failed",
-		"413Request Entity Too Large",
-		"414Request URI Too Long",
-		"415Unsupported Media Type",
-		"416Requested Range Not Satisfiable",
-		"417Expectation Failed",
-		"418I'm a teapot",
-		"421Misdirected Request",
-		"422Unprocessable Entity",
-		"423Locked",
-		"424Failed Dependency",
-		"425Too Early",
-		"426Upgrade Required",
-		"428Precondition Required",
-		"429Too Many Requests",
-		"431Request Header Fields Too Large",
-		"451Unavailable For Legal Reasons",
-		"500Internal Server Error",
-		"501Not Implemented",
-		"502Bad Gateway",
-		"503Service Unavailable",
-		"504Gateway Timeout",
-		"505HTTP Version Not Supported",
-		"506Variant Also Negotiates",
-		"507Insufficient Storage",
-		"508Loop Detected",
-		"510Not Extended",
-		"511Network Authentication Required",
+		"307    Temporary Redirect",
+		"308    Permanent Redirect",
+		"400    Bad Request",
+		"401    Unauthorized",
+		"402    Payment Required",
+		"403    Forbidden",
+		"404    Not Found",
+		"405    Method Not Allowed",
+		"406    Not Acceptable",
+		"407    Proxy Authentication Required",
+		"408    Request Timeout",
+		"409    Conflict",
+		"410    Gone",
+		"411    Length Required",
+		"412    Precondition Failed",
+		"413    Request Entity Too Large",
+		"414    Request URI Too Long",
+		"415    Unsupported Media Type",
+		"416    Requested Range Not Satisfiable",
+		"417    Expectation Failed",
+		"418    I'm a teapot",
+		"421    Misdirected Request",
+		"422    Unprocessable Entity",
+		"423    Locked",
+		"424    Failed Dependency",
+		"425    Too Early",
+		"426    Upgrade Required",
+		"428    Precondition Required",
+		"429    Too Many Requests",
+		"431    Request Header Fields Too Large",
+		"451    Unavailable For Legal Reasons",
+		"500    Internal Server Error",
+		"501    Not Implemented",
+		"502    Bad Gateway",
+		"503    Service Unavailable",
+		"504    Gateway Timeout",
+		"505    HTTP Version Not Supported",
+		"506    Variant Also Negotiates",
+		"507    Insufficient Storage",
+		"508    Loop Detected",
+		"510    Not Extended",
+		"511    Network Authentication Required",
 	}
 
 	for _, want := range wantLines {
@@ -172,13 +166,12 @@ func TestPrintStatusCodes(t *testing.T) {
 }
 
 func TestPrintStatusText(t *testing.T) {
-
-	w := new(tabwriter.Writer)
+	// Create a tabwriter with a buffer
 	var buf bytes.Buffer
-	w.Init(&buf, 0, 8, 1, '\t', 0)
+	w := tabwriter.NewWriter(&buf, 0, 4, 4, ' ', 0)
 
 	code := "100"
-	printStatusText(w, code)
+	_ = printStatusText(w, code)
 
 	wantLines := []string{
 		"Description",
@@ -202,14 +195,16 @@ func TestPrintStatusText(t *testing.T) {
 // ================== Cli tests start ==================
 
 func TestCliHelp(t *testing.T) {
-	// Must reset flag.CommandLine to avoid 'flag redefined' error
+	// Must reset flag.CommandLine to avoid "flag redefined" error
 	flag.CommandLine = flag.NewFlagSet(os.Args[0], flag.ExitOnError)
-	os.Args = []string{"cli", "-help"}
 
 	var buf bytes.Buffer
-	flag.CommandLine.SetOutput(&buf)
+	w := tabwriter.NewWriter(&buf, 0, 4, 4, ' ', 0)
+	flag.CommandLine.SetOutput(w)
 
-	Cli("v1.0")
+	os.Args = []string{"cli", "-help"}
+
+	Cli(w, "v1.0", func(int) {})
 
 	if !strings.Contains(buf.String(), "Usage") {
 		t.Errorf("Expected help text to be printed")
@@ -220,14 +215,15 @@ func TestCliVersion(t *testing.T) {
 	// Must reset flag.CommandLine to avoid "flag redefined" error
 	flag.CommandLine = flag.NewFlagSet(os.Args[0], flag.ExitOnError)
 
+	var buf bytes.Buffer
+	w := tabwriter.NewWriter(&buf, 0, 4, 4, ' ', 0)
+	flag.CommandLine.SetOutput(w)
+
 	os.Args = []string{"cli", "-version"}
 
-	var buf bytes.Buffer
-	flag.CommandLine.SetOutput(&buf)
+	Cli(w, "v1.0", func(int) {})
 
-	Cli("v1.0")
-
-	if !strings.Contains(buf.String(), "") {
+	if !strings.Contains(buf.String(), "v1.0") {
 		t.Errorf("Expected version to be printed")
 	}
 }
@@ -235,12 +231,14 @@ func TestCliVersion(t *testing.T) {
 func TestCliList(t *testing.T) {
 	// Must reset flag.CommandLine to avoid "flag redefined" error
 	flag.CommandLine = flag.NewFlagSet(os.Args[0], flag.ExitOnError)
-	os.Args = []string{"cli", "-list"}
 
 	var buf bytes.Buffer
-	flag.CommandLine.SetOutput(&buf)
+	w := tabwriter.NewWriter(&buf, 0, 4, 4, ' ', 0)
+	flag.CommandLine.SetOutput(w)
 
-	Cli("v1.0")
+	os.Args = []string{"cli", "-list"}
+
+	Cli(w, "v1.0", func(int) {})
 
 	if !strings.Contains(buf.String(), "418") {
 		t.Errorf("Expected status codes to be printed")
@@ -250,16 +248,103 @@ func TestCliList(t *testing.T) {
 func TestCliCode(t *testing.T) {
 	// Must reset flag.CommandLine to avoid "flag redefined" error
 	flag.CommandLine = flag.NewFlagSet(os.Args[0], flag.ExitOnError)
-	os.Args = []string{"cli", "-code", "404"}
 
 	var buf bytes.Buffer
-	flag.CommandLine.SetOutput(&buf)
+	w := tabwriter.NewWriter(&buf, 0, 4, 4, ' ', 0)
+	flag.CommandLine.SetOutput(w)
 
-	Cli("v1.0")
+	os.Args = []string{"cli", "-code", "404"}
+
+	Cli(w, "v1.0", func(int) {})
 
 	if !strings.Contains(buf.String(), "404 Not Found") {
 		t.Errorf("Expected 404 status text to be printed")
 	}
+}
+
+func TestCliCat(t *testing.T) {
+	// Must reset flag.CommandLine to avoid "flag redefined" error
+	flag.CommandLine = flag.NewFlagSet(os.Args[0], flag.ExitOnError)
+
+	var buf bytes.Buffer
+	w := tabwriter.NewWriter(&buf, 0, 4, 4, ' ', 0)
+	flag.CommandLine.SetOutput(w)
+
+	os.Args = []string{"cli", "-list", "-cat", "1"}
+
+	Cli(w, "v1.0", func(int) {})
+
+	wantLines := []string{
+		"100    Continue",
+		"101    Switching Protocols",
+		"102    Processing",
+		"103    Early Hints",
+	}
+
+	for _, want := range wantLines {
+		if !strings.Contains(buf.String(), want) {
+			t.Errorf("expected 1xx status codes to be printed; want %q", want)
+		}
+	}
+}
+
+func TestCliError(t *testing.T) {
+	// Must reset flag.CommandLine to avoid "flag redefined" error
+	flag.CommandLine = flag.NewFlagSet(os.Args[0], flag.ExitOnError)
+
+	var buf bytes.Buffer
+	w := tabwriter.NewWriter(&buf, 0, 4, 4, ' ', 0)
+	flag.CommandLine.SetOutput(w)
+
+	// Invalid flag
+	os.Args = []string{"cli", "-invalid"}
+	Cli(w, "v1.0", func(int) {})
+	if !strings.Contains(buf.String(), "flag provided but not defined: -invalid") {
+		t.Errorf("Expected error message to be printed, got %s\n", buf.String())
+	}
+
+	// Missing code
+	os.Args = []string{"cli", "-code"}
+	Cli(w, "v1.0", func(int) {})
+	if !strings.Contains(buf.String(), "flag needs an argument: -code") {
+		t.Errorf("Expected error message to be printed, got %s\n", buf.String())
+	}
+	buf.Reset()
+
+	// Invalid code
+	os.Args = []string{"cli", "-code", "999"}
+	Cli(w, "v1.0", func(int) {})
+	if !strings.Contains(buf.String(), "error: invalid status code 999") {
+		t.Errorf("Expected error message to be printed, got %s\n", buf.String())
+	}
+	buf.Reset()
+
+	// Using -cat without -list
+	os.Args = []string{"cli", "-cat", "6"}
+	Cli(w, "v1.0", func(int) {})
+	if !strings.Contains(buf.String(), "error: cannot use -cat without -list") {
+		t.Errorf("Expected error message to be printed, got %s\n", buf.String())
+	}
+	buf.Reset()
+
+	// Using -cat with -list but invalid category
+	os.Args = []string{"cli", "-list", "-cat", "6"}
+	Cli(w, "v1.0", func(int) {})
+
+	if !strings.Contains(buf.String(),
+		"error: invalid category 6; allowed categories are 1, 2, 3, 4, 5") {
+		t.Errorf("Expected error message to be printed, got %s\n", buf.String())
+	}
+	buf.Reset()
+
+	// Using -list after -cat but without category value
+	os.Args = []string{"cli", "-cat", "-list"}
+	Cli(w, "v1.0", func(int) {})
+
+	if !strings.Contains(buf.String(), "error: cannot use -cat without -list") {
+		t.Errorf("Expected error message to be printed, got %s\n", buf.String())
+	}
+	buf.Reset()
 }
 
 // ================== Cli tests end ==================

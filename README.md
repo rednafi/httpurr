@@ -27,27 +27,6 @@
 
 ## Quickstart
 
-* Print the options:
-
-    ```sh
-    httpurr -help
-    ```
-
-    ```txt
-    ᗢ httpurr
-    ==========
-
-    Usage of httpurr:
-    -code string
-          Print the description of an HTTP status code
-    -help
-          Print usage
-    -list
-          Print HTTP status codes
-    -version
-          Print version
-    ```
-
 * List the HTTP status codes:
 
     ```sh
@@ -72,10 +51,63 @@
     ...
     ```
 
+* Filter the status codes by categories:
+
+    ```sh
+    httpurr -list -cat 2
+    ```
+
+    ```txt
+    ᗢ httpurr
+    ==========
+
+    Status Codes
+    ------------
+
+    ------------------ 2xx ------------------
+
+    200    OK
+    201    Created
+    202    Accepted
+    203    Non-Authoritative Information
+    204    No Content
+    205    Reset Content
+    206    Partial Content
+    207    Multi-Status
+    208    Already Reported
+    226    IM Used
+    ```
+
 * Display the description of a status code:
 
     ```sh
     httpurr -code 410
+    ```
+
+    ```txt
+    ᗢ httpurr
+    ==========
+
+    Description
+    -----------
+
+    The HyperText Transfer Protocol (HTTP) 410 Gone client error response code
+    indicates that access to the target resource is no longer available at the
+    origin server and that this condition is likely to be permanent.
+
+    If you don't know whether this condition is temporary or permanent, a 404 status
+    code should be used instead.
+
+    Status
+    ------
+
+    410 Gone
+
+    Source
+    ------
+
+    https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/410
+
     ```
 
 ## Development
