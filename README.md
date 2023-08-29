@@ -27,30 +27,6 @@
 
 ## Quickstart
 
-* Print the options:
-
-    ```sh
-    httpurr -help
-    ```
-
-    ```txt
-    ᗢ httpurr
-    ==========
-
-    Usage of httpurr:
-    -cat string
-          Print HTTP status codes by category with -list;
-          allowed categories are 1, 2, 3, 4, 5
-    -code string
-          Print the description of an HTTP status code
-    -help
-          Print usage
-    -list
-          Print HTTP status codes
-    -version
-          Print version
-    ```
-
 * List the HTTP status codes:
 
     ```sh
