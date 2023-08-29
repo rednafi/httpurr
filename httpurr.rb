@@ -5,20 +5,20 @@
 class Httpurr < Formula
   desc "HTTP status codes on speed dial"
   homepage "https://github.com/rednafi/httpurr"
-  version "0.1.0"
+  version "0.1.1"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/rednafi/httpurr/releases/download/v0.1.0/httpurr_Darwin_arm64.tar.gz"
-      sha256 "edceb5488ce255d6ed403b34e12025a9ad282d14f6d06058e1958fdb331ebc0e"
+    if Hardware::CPU.intel?
+      url "https://github.com/rednafi/httpurr/releases/download/v0.1.1/httpurr_Darwin_x86_64.tar.gz"
+      sha256 "b03f1b13a851e08b8742ab5fcfd500fcd850e605c38695a7e8ae125dfe212575"
 
       def install
         bin.install "httpurr"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/rednafi/httpurr/releases/download/v0.1.0/httpurr_Darwin_x86_64.tar.gz"
-      sha256 "b56d0aa0cc428dd74664cc0574f009ea9cbb73484ef0380b16153d3541069a45"
+    if Hardware::CPU.arm?
+      url "https://github.com/rednafi/httpurr/releases/download/v0.1.1/httpurr_Darwin_arm64.tar.gz"
+      sha256 "82acefd1222f6228636f2cda6518e0316f46624398adc722defb55c68ac3bb30"
 
       def install
         bin.install "httpurr"
@@ -28,16 +28,16 @@ class Httpurr < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/rednafi/httpurr/releases/download/v0.1.0/httpurr_Linux_arm64.tar.gz"
-      sha256 "2b9c65a676bf93d400bbfede1e7819f4ef20f306cfd4ba5d6e58c267176eac2e"
+      url "https://github.com/rednafi/httpurr/releases/download/v0.1.1/httpurr_Linux_arm64.tar.gz"
+      sha256 "ad95e8a68b7c48ddbe2a19f7a45d91d954058748ddb47411e3e6efa57dfc8432"
 
       def install
         bin.install "httpurr"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/rednafi/httpurr/releases/download/v0.1.0/httpurr_Linux_x86_64.tar.gz"
-      sha256 "0f85726a99c9ad28548dc4f12ff1b90d9ec5beb002e1b7faaa394b0b726dca5e"
+      url "https://github.com/rednafi/httpurr/releases/download/v0.1.1/httpurr_Linux_x86_64.tar.gz"
+      sha256 "2bee752e7c93e8d0ff7564d6b39cf7780efdb07cfd395cc9c054a5148133c72c"
 
       def install
         bin.install "httpurr"
