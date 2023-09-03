@@ -364,7 +364,7 @@ func TestCliError(t *testing.T) {
 	}
 	buf.Reset()
 
-	// Using -cat without -list
+	// Using --cat without --list
 	os.Args = []string{"cli", "--cat", "6"}
 	Cli(w, "v1.0", func(int) {})
 	if !strings.Contains(buf.String(), "error: cannot use --cat without --list") {
@@ -372,7 +372,7 @@ func TestCliError(t *testing.T) {
 	}
 	buf.Reset()
 
-	// Using -cat with -list but invalid category
+	// Using --cat with --list but invalid category
 	os.Args = []string{"cli", "--list", "--cat", "6"}
 	Cli(w, "v1.0", func(int) {})
 
@@ -382,7 +382,7 @@ func TestCliError(t *testing.T) {
 	}
 	buf.Reset()
 
-	// Using -list after -cat but without category value
+	// Using --list after --cat but without category value
 	os.Args = []string{"cli", "--cat", "-list"}
 	Cli(w, "v1.0", func(int) {})
 
