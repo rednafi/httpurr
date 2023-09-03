@@ -107,7 +107,6 @@
 	------
 
 	https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/410
-
 	```
 * See all available options:
 
@@ -116,21 +115,21 @@
 	```
 
 	```txt
-	ᗢ httpurr
-	==========
+    ᗢ httpurr
+    ==========
 
-	Usage of httpurr:
-	  --cat [category]
-		  Print HTTP status codes by category with --list;
-		  allowed categories are 1, 2, 3, 4, 5
-	  -c, --code [status code]
-		  Print the description of an HTTP status code
-	  -h, --help
-		  Print usage
-	  -l, --list
-		  Print HTTP status codes
-	  -v, --version
-		  Print version
+    Usage of httpurr:
+      --cat [category]
+            Print HTTP status codes by category with --list;
+            allowed categories are 1, 2, 3, 4, 5
+      -c, --code [status code]
+            Print the description of an HTTP status code
+      -h, --help
+            Print usage
+      -l, --list
+            Print HTTP status codes
+      -v, --version
+            Print version
 	```
 
 ## Development
