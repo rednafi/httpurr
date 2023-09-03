@@ -121,18 +121,18 @@
 	==========
 
 	Usage of httpurr:
-		--cat [category]
-			Print HTTP status codes by category with --list;
-			allowed categories are 1, 2, 3, 4, 5
-		--code, -c [status code]
-			Print the description of an HTTP status code
-		--help, -h
-			Print usage
-		--list, -l
-			Print HTTP status codes
-		--version, -v
-			Print version
-			
+	    --cat [category]
+            Print HTTP status codes by category with --list;
+            allowed categories are 1, 2, 3, 4, 5
+        --code, -c [status code]
+            Print the description of an HTTP status code
+        --help, -h
+            Print usage
+        --list, -l
+            Print HTTP status codes
+        --version, -v
+            Print version
+
 	```
 
 ## Development
