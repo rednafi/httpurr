@@ -131,13 +131,33 @@ func Cli(w *tabwriter.Writer, version string, exitFunc func(int)) {
 	fs.SetOutput(w)
 
 	code := flag.String("code", "", "Print the description of an HTTP status code")
+	flag.StringVar(code, "c", "", "Print the description of an HTTP status code")
 	help := flag.Bool("help", false, "Print usage")
+	flag.BoolVar(help, "h", false, "Print usage")
 	vers := flag.Bool("version", false, "Print version")
+	flag.BoolVar(vers, "v", false, "Print version")
 	list := flag.Bool("list", false, "Print HTTP status codes")
+	flag.BoolVar(list, "l", false, "Print HTTP status codes")
 	cat := flag.String("cat", "",
 		"Print HTTP status codes by category with -list; \n"+
 			"allowed categories are 1, 2, 3, 4, 5",
 	)
+
+	flag.Usage = func() {
+		fmt.Fprintf(flag.CommandLine.Output(), "Usage of %s:\n", os.Args[0])
+		fmt.Print(`--cat [category]
+      Print HTTP status codes by category with -list; 
+      allowed categories are 1, 2, 3, 4, 5
+--code, -c [status code]
+      Print the description of an HTTP status code
+--help, -h
+      Print usage
+--list, -l
+      Print HTTP status codes
+--version, -v
+      Print version
+`)
+	}
 
 	// Print the header
 	printHeader(w)
