@@ -14,7 +14,7 @@
 
 	```sh
 	brew tap rednafi/httpurr https://github.com/rednafi/httpurr \
-		&& brew install httpurr
+	    && brew install httpurr
 	```
 
 * Or elsewhere, go install:
@@ -121,17 +121,17 @@
 	==========
 
 	Usage of httpurr:
-	    --cat [category]
+        --cat [category]
             Print HTTP status codes by category with --list;
-            allowed categories are 1, 2, 3, 4, 5
+	        allowed categories are 1, 2, 3, 4, 5
         --code, -c [status code]
-            Print the description of an HTTP status code
+	        Print the description of an HTTP status code
         --help, -h
-            Print usage
-        --list, -l
-            Print HTTP status codes
-        --version, -v
-            Print version
+	Print usage
+--list, -l
+	Print HTTP status codes
+--version, -v
+	Print version
 
 	```
 

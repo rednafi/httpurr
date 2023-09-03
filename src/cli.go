@@ -151,17 +151,17 @@ func Cli(w *tabwriter.Writer, version string, exitFunc func(int)) {
 	// Override the default usage to print the custom usage message
 	flag.Usage = func() {
 		fmt.Fprintf(w, "Usage of %s:\n", os.Args[0])
-		fmt.Fprint(w, `    --cat [category]
-    	Print HTTP status codes by category with --list;
-      	allowed categories are 1, 2, 3, 4, 5
-    --code, -c [status code]
-    	Print the description of an HTTP status code
-    --help, -h
-    	Print usage
-    --list, -l
-    	Print HTTP status codes
-    --version, -v
-    	Print version
+		fmt.Fprint(w, `  --cat [category]
+        Print HTTP status codes by category with --list;
+        allowed categories are 1, 2, 3, 4, 5
+  -c, --code [status code]
+        Print the description of an HTTP status code
+  -h, --help
+        Print usage
+  -l, --list
+        Print HTTP status codes
+  -v, --version
+        Print version
 `)
 	}
 
