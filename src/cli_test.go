@@ -202,7 +202,18 @@ func TestCliHelp(t *testing.T) {
 	w := tabwriter.NewWriter(&buf, 0, 4, 4, ' ', 0)
 	flag.CommandLine.SetOutput(w)
 
-	os.Args = []string{"cli", "-help"}
+	// Test --
+	os.Args = []string{"cli", "--help"}
+
+	Cli(w, "v1.0", func(int) {})
+
+	if !strings.Contains(buf.String(), "Usage") {
+		t.Errorf("Expected help text to be printed")
+	}
+
+	// Test -
+	buf.Reset()
+	os.Args = []string{"cli", "-h"}
 
 	Cli(w, "v1.0", func(int) {})
 
@@ -219,7 +230,18 @@ func TestCliVersion(t *testing.T) {
 	w := tabwriter.NewWriter(&buf, 0, 4, 4, ' ', 0)
 	flag.CommandLine.SetOutput(w)
 
-	os.Args = []string{"cli", "-version"}
+	// Test --
+	os.Args = []string{"cli", "--version"}
+
+	Cli(w, "v1.0", func(int) {})
+
+	if !strings.Contains(buf.String(), "v1.0") {
+		t.Errorf("Expected version to be printed")
+	}
+
+	// Test -
+	buf.Reset()
+	os.Args = []string{"cli", "-v"}
 
 	Cli(w, "v1.0", func(int) {})
 
@@ -236,13 +258,25 @@ func TestCliList(t *testing.T) {
 	w := tabwriter.NewWriter(&buf, 0, 4, 4, ' ', 0)
 	flag.CommandLine.SetOutput(w)
 
-	os.Args = []string{"cli", "-list"}
+	// Test --
+	os.Args = []string{"cli", "--list"}
 
 	Cli(w, "v1.0", func(int) {})
 
 	if !strings.Contains(buf.String(), "418") {
 		t.Errorf("Expected status codes to be printed")
 	}
+
+	// Test -
+	buf.Reset()
+	os.Args = []string{"cli", "-l"}
+
+	Cli(w, "v1.0", func(int) {})
+
+	if !strings.Contains(buf.String(), "418") {
+		t.Errorf("Expected status codes to be printed")
+	}
+
 }
 
 func TestCliCode(t *testing.T) {
@@ -253,7 +287,18 @@ func TestCliCode(t *testing.T) {
 	w := tabwriter.NewWriter(&buf, 0, 4, 4, ' ', 0)
 	flag.CommandLine.SetOutput(w)
 
+	// Test --
 	os.Args = []string{"cli", "-code", "404"}
+
+	Cli(w, "v1.0", func(int) {})
+
+	if !strings.Contains(buf.String(), "404 Not Found") {
+		t.Errorf("Expected 404 status text to be printed")
+	}
+
+	// Test -
+	buf.Reset()
+	os.Args = []string{"cli", "-c", "404"}
 
 	Cli(w, "v1.0", func(int) {})
 
@@ -297,14 +342,14 @@ func TestCliError(t *testing.T) {
 	flag.CommandLine.SetOutput(w)
 
 	// Invalid flag
-	os.Args = []string{"cli", "-invalid"}
+	os.Args = []string{"cli", "--invalid"}
 	Cli(w, "v1.0", func(int) {})
 	if !strings.Contains(buf.String(), "flag provided but not defined: -invalid") {
 		t.Errorf("Expected error message to be printed, got %s\n", buf.String())
 	}
 
 	// Missing code
-	os.Args = []string{"cli", "-code"}
+	os.Args = []string{"cli", "--code"}
 	Cli(w, "v1.0", func(int) {})
 	if !strings.Contains(buf.String(), "flag needs an argument: -code") {
 		t.Errorf("Expected error message to be printed, got %s\n", buf.String())
@@ -312,7 +357,7 @@ func TestCliError(t *testing.T) {
 	buf.Reset()
 
 	// Invalid code
-	os.Args = []string{"cli", "-code", "999"}
+	os.Args = []string{"cli", "--code", "999"}
 	Cli(w, "v1.0", func(int) {})
 	if !strings.Contains(buf.String(), "error: invalid status code 999") {
 		t.Errorf("Expected error message to be printed, got %s\n", buf.String())
@@ -320,15 +365,15 @@ func TestCliError(t *testing.T) {
 	buf.Reset()
 
 	// Using -cat without -list
-	os.Args = []string{"cli", "-cat", "6"}
+	os.Args = []string{"cli", "--cat", "6"}
 	Cli(w, "v1.0", func(int) {})
-	if !strings.Contains(buf.String(), "error: cannot use -cat without -list") {
+	if !strings.Contains(buf.String(), "error: cannot use --cat without --list") {
 		t.Errorf("Expected error message to be printed, got %s\n", buf.String())
 	}
 	buf.Reset()
 
 	// Using -cat with -list but invalid category
-	os.Args = []string{"cli", "-list", "-cat", "6"}
+	os.Args = []string{"cli", "--list", "--cat", "6"}
 	Cli(w, "v1.0", func(int) {})
 
 	if !strings.Contains(buf.String(),
@@ -338,10 +383,10 @@ func TestCliError(t *testing.T) {
 	buf.Reset()
 
 	// Using -list after -cat but without category value
-	os.Args = []string{"cli", "-cat", "-list"}
+	os.Args = []string{"cli", "--cat", "-list"}
 	Cli(w, "v1.0", func(int) {})
 
-	if !strings.Contains(buf.String(), "error: cannot use -cat without -list") {
+	if !strings.Contains(buf.String(), "error: cannot use --cat without --list") {
 		t.Errorf("Expected error message to be printed, got %s\n", buf.String())
 	}
 	buf.Reset()

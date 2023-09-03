@@ -130,32 +130,38 @@ func Cli(w *tabwriter.Writer, version string, exitFunc func(int)) {
 	// Set the default output to the passed tabwriter
 	fs.SetOutput(w)
 
+	// Define the flags
 	code := flag.String("code", "", "Print the description of an HTTP status code")
 	flag.StringVar(code, "c", "", "Print the description of an HTTP status code")
+
 	help := flag.Bool("help", false, "Print usage")
 	flag.BoolVar(help, "h", false, "Print usage")
+
 	vers := flag.Bool("version", false, "Print version")
 	flag.BoolVar(vers, "v", false, "Print version")
+
 	list := flag.Bool("list", false, "Print HTTP status codes")
 	flag.BoolVar(list, "l", false, "Print HTTP status codes")
+
 	cat := flag.String("cat", "",
-		"Print HTTP status codes by category with -list; \n"+
+		"Print HTTP status codes by category with --list; \n"+
 			"allowed categories are 1, 2, 3, 4, 5",
 	)
 
+	// Override the default usage to print the custom usage message
 	flag.Usage = func() {
-		fmt.Fprintf(flag.CommandLine.Output(), "Usage of %s:\n", os.Args[0])
-		fmt.Print(`--cat [category]
-      Print HTTP status codes by category with -list; 
-      allowed categories are 1, 2, 3, 4, 5
---code, -c [status code]
-      Print the description of an HTTP status code
---help, -h
-      Print usage
---list, -l
-      Print HTTP status codes
---version, -v
-      Print version
+		fmt.Fprintf(w, "Usage of %s:\n", os.Args[0])
+		fmt.Fprint(w, `    --cat [category]
+    	Print HTTP status codes by category with --list;
+      	allowed categories are 1, 2, 3, 4, 5
+    --code, -c [status code]
+    	Print the description of an HTTP status code
+    --help, -h
+    	Print usage
+    --list, -l
+    	Print HTTP status codes
+    --version, -v
+    	Print version
 `)
 	}
 
@@ -163,7 +169,7 @@ func Cli(w *tabwriter.Writer, version string, exitFunc func(int)) {
 	printHeader(w)
 
 	// Override the default usage to flush the tabwriter
-	flagUsageOld := fs.Usage
+	flagUsageOld := flag.Usage
 	fs.Usage = func() {
 		flagUsageOld()
 		w.Flush()
@@ -187,7 +193,7 @@ func Cli(w *tabwriter.Writer, version string, exitFunc func(int)) {
 	}
 
 	if *cat != "" && !*list {
-		fmt.Fprintln(w, "error: cannot use -cat without -list")
+		fmt.Fprintln(w, "error: cannot use --cat without --list")
 		exitFunc(2)
 	}
 
